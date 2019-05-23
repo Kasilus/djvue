@@ -1,4 +1,7 @@
 
+/**
+ * Создание компонент всех потенциальных виджетов
+ * */
 export default {
       'hello-world' :() => import("./hello-world/HelloWorld.vue"),
 

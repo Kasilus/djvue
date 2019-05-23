@@ -62,7 +62,9 @@ import listenerMixin from "djvue/mixins/core/listener.mixin.js"
 import availableWidgets from "djvue/components/widgets/index.js"
 import ConfigDialogLayout from "djvue/components/core/ext//configDialogLayout.vue"
 
-
+/**
+ * Register plugins for global application configuration.
+ * */
 Vue.use(cookiePlugin)
 Vue.use( portalPlugin, {baseURL:"../../../"})
 Vue.use( dpsPlugin, {

@@ -7,6 +7,11 @@ export default {
 
 	methods:{
 
+	  /**
+     * Registration of the event.
+     *
+     * @param event Event to be registered.
+     * */
 		_registerEvent (event) {
 			if(!this.coreEventHandlers[event]) {
 				this.coreEventHandlers[event] = (emitter,...args) => {
@@ -17,6 +22,11 @@ export default {
 			}
 		},
 
+    /**
+     * Unsubscribe from the event.
+     *
+     * @param event The event to unsubscribe from.
+     * */
 		_unregisterEvent(event){
 			if(this.coreEventHandlers[event]) {
 				this.$eventHub.off(event, this.coreEventHandlers[event])
@@ -24,7 +34,10 @@ export default {
 			}	
 		},
 
-		
+
+    /**
+     * Allows you to trigger an event.
+     * */
 		emit(event, ...args){
 			return new Promise((resolve,reject) => {
 				this.$eventHub.emit(event, ...args)
@@ -33,6 +46,9 @@ export default {
 			 
 		},
 
+    /**
+     * Allows you to subscribe to an event.
+     * */
 		on ({event, rule, callback}) {
 
 			
@@ -47,6 +63,9 @@ export default {
 		
 		},
 
+    /**
+     * Allows you to unsubscribe from the event.
+     * */
 		off (...args) {
 
 			let event, rule, callback;
@@ -91,6 +110,12 @@ export default {
 
 		},
 
+    /**
+     * Get event handler.
+     *
+     * @param event The event from which the handler will be received.
+     * @param emitter ??? Calls events.
+     * */
 		_getEventHandler (event, emitter) {
 
 			

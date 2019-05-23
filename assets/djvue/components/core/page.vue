@@ -7,7 +7,9 @@
 import layouts from "djvue/components/layouts/index.js"
 import mixin from "djvue/mixins/core/djvue.mixin.js"
 
-
+/**
+ * Creating a component of page.
+ * */
 export default {
 
   mixins: [mixin],
@@ -25,6 +27,12 @@ export default {
   }),
 
   watch: {
+    /**
+     * Sets the transition from one page to another.
+     *
+     * @param to The page to go to.
+     * @param from The page from which the transition will be.
+     * */
     '$route'(to, from) {
       this.setCurrentPage(this.getPage(this.$route.params.page))
       this.layout = "empty"
@@ -34,10 +42,16 @@ export default {
     }
   },
 
+  /**
+   * Actions after page refresh.
+   * */
   updated() {
     window.document.title = `${this.appName}${(this.getPage(this.$route.params.page).title?"-":"")}${this.getPage(this.$route.params.page).title || ""}`
   },
 
+  /**
+   * Actions after page creation.
+   * */
   created() {
     // console.log(this.$route)
     this.setCurrentPage(this.getPage(this.$route.params.page))

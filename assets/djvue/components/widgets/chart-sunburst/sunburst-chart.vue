@@ -24,7 +24,10 @@
   import echart from "djvue/components/core/ext/echart.vue"
 
   Vue.prototype.$dialog.component('ChartConfigDialog', ChartConfigDialog)
-   
+
+  /**
+   * Creating a sunburst widget component.
+   * */
  export default  {
     
     name:"sunburst-chart-widget",
@@ -36,6 +39,10 @@
     components:{ echart},
     
     computed:{
+
+       /**
+        * Get options (properties) of the current chart.
+        * */
        chartOptions(){
          if(!this.options) return 
          let res = JSON.parse(JSON.stringify(this.options));

@@ -40,9 +40,16 @@ import components from "djvue/components/widgets/index.js"
 import djvueMixin from "djvue/mixins/core/djvue.mixin.js"
 import widgetMixin from "djvue/mixins/core/widget.mixin.js";
 
-
+/**
+ * Creating a component of widget.
+ * */
 export default {
 
+  /**
+   * Adding mixins to the holders that allow it:
+   * 1. Save configuration (djvueMixin).
+   * 2. Tune widget (widgetMixin).
+   * */
   mixins: [djvueMixin, widgetMixin],
 
   name: "dj-widget",
@@ -67,18 +74,30 @@ export default {
 
   methods: {
 
+    /**
+     * Change the configuration of the current widget.
+     * */
     configure() {
       this.$eventHub.emit("widget-reconfigure", this)
     },
 
+    /**
+     * Create a clone of the current widget.
+     * */
     cloneWidget() {
       this.$eventHub.emit("widget-clone", this)
     },
 
+    /**
+     * Delete current widget.
+     * */
     deleteWidget() {
       this.$eventHub.emit("widget-delete", this)
     },
 
+    /**
+     * Initialize a new child of the current widget.
+     * */
     onInit(){
       this._updateConfig();
       this.onInitChild();
